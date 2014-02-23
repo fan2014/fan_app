@@ -4,14 +4,19 @@ describe "Static pages" do
 
   describe "Home page" do
 
-    it "should have the content 'Sample App'" do
+    it "should have the content 'Fan App'" do
       visit '/static_pages/home'
-      expect(page).to have_content('Sample App')
+      expect(page).to have_content('Fan App')
     end
 
-    it "should have the title 'Home'" do
+    it "should have the base title" do
       visit '/static_pages/home'
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App | Home")
+      expect(page).to have_title("Fan App")
+    end
+    
+    it "should not have a custom page title" do
+      visit '/static_pages/home'
+      page.should_not have_selector('title', :text => '| Home')
     end
   end
 
@@ -24,7 +29,7 @@ describe "Static pages" do
 
     it "should have the title 'Help'" do
       visit '/static_pages/help'
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App | Help")
+      expect(page).to have_title("Fan App | Help")
     end
   end
 
@@ -37,7 +42,7 @@ describe "Static pages" do
 
     it "should have the title 'About Us'" do
       visit '/static_pages/about'
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App | About Us")
+      expect(page).to have_title("Fan App | About Us")
     end
   end
 end
